@@ -10,9 +10,11 @@ const Navbar = () => {
   };
 
   return (
-    <div className={`w-full h-[50px] flex items-center justify-between px-4 bg-gray-200 dark:bg-gray-800`}>
+    <div 
+      className={`w-full h-[50px] flex items-center justify-between px-4 bg-secondary text-nuetral shadow-md ${isDarkMode ? 'bg-dark text-light' : ''}`}
+    >
       {/* Name/Brand */}
-      <div className="text-xl font-bold text-gray-800 dark:text-gray-200">
+      <div className="text-xl font-bold">
         Addis Software
       </div>
       
@@ -21,15 +23,15 @@ const Navbar = () => {
         {/* Dark/Light Mode Toggle */}
         <button 
           onClick={toggleDarkMode} 
-          className="text-gray-800 dark:text-gray-200"
+          className="focus:outline-none"
         >
           {isDarkMode ? <FaSun size={20} /> : <FaMoon size={20} />}
         </button>
         
         {/* Profile Icon */}
         <div className="flex items-center space-x-2">
-          <FaUserCircle size={30} className="text-gray-800 dark:text-gray-200" />
-          <span className="hidden md:inline text-gray-800 dark:text-gray-200">Profile</span>
+          <FaUserCircle size={30} className="" />
+          <span className="hidden md:inline">Profile</span>
         </div>
       </div>
     </div>

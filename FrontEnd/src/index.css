@@ -1,21 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* styles/global.css or styles/your-component.css */
-.sidebar-scrollbar::-webkit-scrollbar {
-    width: 12px; /* Width of the scrollbar */
-  }
-  
-  .sidebar-scrollbar::-webkit-scrollbar-track {
-    background: #1e40af; /* Color of the track (scrollbar background) */
-  }
-  
-  .sidebar-scrollbar::-webkit-scrollbar-thumb {
-    background: #3b82f6; /* Color of the scrollbar handle */
-    border-radius: 6px; /* Rounded corners of the scrollbar handle */
-  }
-  
-  .sidebar-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #2563eb; /* Color when hovering over the scrollbar handle */
-  }
-  
