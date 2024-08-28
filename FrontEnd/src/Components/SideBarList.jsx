@@ -6,9 +6,9 @@ const SideBarList = ({ label, icon, link }) => {
   return (
         <Link
           to={link}
-          className="flex items-center p-3   hover:bg-secondary-V2 box-border hover:scale-105 mx-2 text-nuetral transition duration-200"
+          className="flex items-center p-3   hover:bg-accent-v2 hover:text-accent hover:border-l-4 hover:border-accent hover:scale-105 mx-2 text-nuetral transition duration-200"
         >
-          <div className="mr-3 text-lg ">
+          <div className="mr-3 text-lg">
             {icon} {/* Render the icon */}
           </div>
           <span>{label}</span> {/* Render the label */}

@@ -5,7 +5,7 @@ import profilePic from '../assets/image/cv pic.png'; // Ensure the file path is 
 
 const SideBar = () => {
   return (
-    <div className="w-full h-screen overflow-y-scroll bg-secondary text-neutral scrollbar-thin">
+    <div className="w-full h-screen overflow-y-scroll sm:block hidden bg-secondary text-neutral scrollbar-thin">
       {/* Sidebar Header */}
       <div className="p-4 bg-secondary flex flex-col items-center">
         {/* Profile Picture */}
