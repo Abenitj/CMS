@@ -5,33 +5,34 @@ import profilePic from '../assets/image/cv pic.png'; // Ensure the file path is 
 
 const SideBar = () => {
   return (
-    <div className="w-full h-screen overflow-y-scroll sm:block hidden bg-secondary text-neutral scrollbar-thin">
-      {/* Sidebar Header */}
-      <div className="p-4 bg-secondary flex flex-col items-center">
-        {/* Profile Picture */}
-        <img
-          src={profilePic}
-          alt="Profile"
-          className="w-16 h-16 rounded-full border-2 border-neutral"
-        />
-        {/* Profile Name */}
-        <h2 className="text-lg font-semibold">John Doe</h2>
-      </div>
+    <div className="w-full h-screen overflow-y-scroll overflow-x-hidden bg-secondary text-neutral scrollbar-thin">
+      {/* Sidebar Container */}
+      <nav className="mt-4 box-border relative">
+        {/* Profile Picture and Name */}
+        <div className="flex flex-col items-center p-4">
+          <img
+            src={profilePic}
+            alt="Profile"
+            className="w-16 h-16  rounded-full border-2 border-neutral"
+          />
+          <h2 className="text-xl font-semibold text-center mt-2">Abenezer Terefe</h2>
+        </div>
 
-      {/* Sidebar Links */}
-      <nav className="mt-4 box-border">
-        {sideBarData.length > 0 ? (
-          sideBarData.map((data) => (
-            <SideBarList
-              key={data.id} // Assuming sideBarData has unique ids
-              label={data.label}
-              icon={data.icon}
-              link={data.link}
-            />
-          ))
-        ) : (
-          <p className="text-center">No items available</p> // Optional message if data is empty
-        )}
+        {/* Sidebar Links */}
+        <div className="mt-4">
+          {sideBarData.length > 0 ? (
+            sideBarData.map((data, index) => (
+              <SideBarList
+                key={index} // Assuming sideBarData does not have unique ids
+                label={data.label}
+                icon={data.icon}
+                link={data.link}
+              />
+            ))
+          ) : (
+            <p className="text-center">No items available</p>
+          )}
+        </div>
       </nav>
     </div>
   );

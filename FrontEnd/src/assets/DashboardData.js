@@ -1,5 +1,4 @@
 import { FaBlog, FaUser, FaProjectDiagram, FaQuestionCircle, FaQuoteRight, FaCog, FaSlidersH } from 'react-icons/fa';
-
 export default [
   {
     value: 120,

@@ -27,7 +27,7 @@ const App = () => {
             <Navbar />
           </div>
           {/* Main content: the dashboard's main content area */}
-          <main className="flex-1 bg-primary p-4 overflow-y-auto">
+          <main className="flex-1 bg-primary pt-4 overflow-y-auto">
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/user" element={<User />} />
