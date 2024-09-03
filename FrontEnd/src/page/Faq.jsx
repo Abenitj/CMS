@@ -1,8 +1,9 @@
 import React from 'react'
+import Form from '../Components/Form';
 const Faq = () => {
     return (
         <div>
-            <h1>Faq</h1>
+        <Form/> 
         </div>
       );
 }
