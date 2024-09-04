@@ -1,16 +1,12 @@
-import React, { useState } from 'react';
-import { XMarkIcon } from '@heroicons/react/24/outline'; // Updated import for Heroicons v2
+import React, { useState, useEffect } from 'react';
+import { XMarkIcon } from '@heroicons/react/24/outline';
 
-const Form = () => {
-  const [isOpen, setIsOpen] = useState(true); // State to control modal visibility
+const Form = ({ formFields, title, isOpenProp, isclose }) => {
+  const [isOpen, setIsOpen] = useState(isOpenProp);
 
-  const formFields = [
-    { name: 'firstName', type: 'text', required: true, label: 'First Name' },
-    { name: 'lastName', type: 'text', required: true, label: 'Last Name' },
-    { name: 'email', type: 'email', required: true, label: 'Email' },
-    { name: 'password', type: 'password', required: true, label: 'Password' },
-    { name: 'file', type: 'file', required: true, label: 'File Upload' },
-  ];
+  useEffect(() => {
+    setIsOpen(isOpenProp);
+  }, [isOpenProp]);
 
   const [formData, setFormData] = useState(
     formFields.reduce((acc, field) => ({ ...acc, [field.name]: '' }), {})
@@ -25,7 +21,7 @@ const Form = () => {
     });
 
     if (type === 'file') {
-      setErrors({ ...errors, [name]: '' }); // Clear file input errors
+      setErrors({ ...errors, [name]: '' });
     } else {
       validateField(name, value);
     }
@@ -47,7 +43,6 @@ const Form = () => {
     let valid = true;
     const newErrors = {};
 
-    // Validate all required fields
     formFields.forEach(field => {
       if (field.required && !formData[field.name]) {
         newErrors[field.name] = `${field.label} is required`;
@@ -57,17 +52,19 @@ const Form = () => {
 
     if (valid) {
       console.log('Form Data:', formData);
-      setIsOpen(false); // Close the modal after submission
+      setIsOpen(false);
+      isclose(); // Call the parent function to handle form close
     } else {
       setErrors(newErrors);
     }
   };
 
   const handleClose = () => {
-    setIsOpen(false); // Close the modal
+    setIsOpen(false);
+    isclose(); // Call the parent function when the form is manually closed
   };
 
-  if (!isOpen) return null; // Do not render the modal if it's closed
+  if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
@@ -78,10 +75,10 @@ const Form = () => {
         >
           <XMarkIcon className="h-6 w-6 text-gray-600" />
         </button>
-        <h2 className="text-2xl font-semibold mb-6 text-gray-700 text-center">Form</h2>
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <h2 className="text-2xl font-semibold mb-6 text-gray-700 text-center">{title}</h2>
+        <form onSubmit={handleSubmit} className="space-y-6 max-h-96 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {formFields.slice(0, 4).map((field, index) => (
+            {formFields.map((field, index) => (
               <div key={index} className="flex flex-col">
                 <label className="mb-1 flex items-center">
                   {field.label}
@@ -100,50 +97,6 @@ const Form = () => {
               </div>
             ))}
           </div>
-          <div className="mt-6">
-            <div className="flex flex-col">
-              {formFields.slice(4, 5).map((field, index) => (
-                <div key={index} className="flex flex-col">
-                  <label className="mb-1 flex items-center">
-                    {field.label}
-                    {field.required && <span className="text-red-500 ml-1">*</span>}
-                  </label>
-                  <input
-                    type={field.type}
-                    name={field.name}
-                    onChange={handleInputChange}
-                    className={`border-b border-gray-300 rounded-none p-2 focus:outline-none focus:border-blue-500 ${errors[field.name] ? 'border-red-500' : ''}`}
-                  />
-                  {errors[field.name] && (
-                    <span className="text-red-500 text-sm mt-1">{errors[field.name]}</span>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-          {/* Remaining fields in a two-column grid if they exist */}
-          {formFields.slice(5).length > 0 && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-              {formFields.slice(5).map((field, index) => (
-                <div key={index} className="flex flex-col">
-                  <label className="mb-1 flex items-center">
-                    {field.label}
-                    {field.required && <span className="text-red-500 ml-1">*</span>}
-                  </label>
-                  <input
-                    type={field.type}
-                    name={field.name}
-                    value={formData[field.name] || ''}
-                    onChange={handleInputChange}
-                    className={`border-b border-gray-300 rounded-none p-2 focus:outline-none focus:border-blue-500 ${errors[field.name] ? 'border-red-500' : ''}`}
-                  />
-                  {errors[field.name] && (
-                    <span className="text-red-500 text-sm mt-1">{errors[field.name]}</span>
-                  )}
-                </div>
-              ))}
-            </div>
-          )}
           <div className="flex justify-center">
             <button
               type="submit"

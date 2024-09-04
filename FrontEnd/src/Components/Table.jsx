@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { FaEdit, FaTrash, FaSearch } from 'react-icons/fa';
-import AddUser from './AddUser';
+import Add_Button from './add-button';
 
-const Table = ({ tableHeaders, data, onEdit, onDelete }) => {
+const Table = ({ tableHeaders, data, onEdit, onDelete,onAdd }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleSearchChange = (event) => {
@@ -31,7 +31,7 @@ const Table = ({ tableHeaders, data, onEdit, onDelete }) => {
             />
             <FaSearch className="absolute top-3 right-3 text-gray-500" size={20} />
           </div>
-          <AddUser />
+          <Add_Button action={onAdd}/>
         </div>
       </div>
       <table className="min-w-full bg-secondary border border-secondary-V2">
