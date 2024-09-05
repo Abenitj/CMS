@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaEdit, FaTrash, FaSearch } from 'react-icons/fa';
 import Add_Button from './add-button';
 
-const Table = ({ tableHeaders, data, onEdit, onDelete,onAdd }) => {
+const Table = ({ tableHeaders, data, onEdit, onDelete,onAdd,title }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleSearchChange = (event) => {
@@ -16,6 +16,7 @@ const Table = ({ tableHeaders, data, onEdit, onDelete,onAdd }) => {
         : false
     )
   );
+
 
   return (
     <div className="overflow-x-auto">
@@ -31,7 +32,7 @@ const Table = ({ tableHeaders, data, onEdit, onDelete,onAdd }) => {
             />
             <FaSearch className="absolute top-3 right-3 text-gray-500" size={20} />
           </div>
-          <Add_Button action={onAdd}/>
+         <Add_Button action={onAdd} title={title}/>
         </div>
       </div>
       <table className="min-w-full bg-secondary border border-secondary-V2">
