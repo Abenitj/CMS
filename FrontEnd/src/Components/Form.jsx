@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
+
 import { XMarkIcon } from '@heroicons/react/24/outline';
-import postData from '../api/post';
+import Create from "../api/create"
 import Update from '../api/update';
-const Form = ({type, formFields, title, isOpenProp, isclose,url,onHandleSubmit, }) => {
+const Form = ({api_info, formFields, title, isOpenProp, isclose,url}) => {
   const [isOpen, setIsOpen] = useState(isOpenProp);
 
   useEffect(() => {
@@ -60,14 +61,14 @@ const Form = ({type, formFields, title, isOpenProp, isclose,url,onHandleSubmit, 
     });
 
     if (valid) {
-   if(type.edit=='edit')
-   {
-     Update(formData,type.url,type.id)
-   }
-   else
-   {
-    console.log("this is for add")
-   }
+     if(api_info.type =='edit')
+     {
+      Update(formData,api_info.url)
+     }
+     else
+     {
+      Create(formData,api_info.url)
+     }
       setIsOpen(false);
       isclose();
        // Call the parent function to handle form close

@@ -3,13 +3,11 @@ import Table from "../Components/Table";
 import useReadData from "../api/Read";
 import Form from "../Components/Form";
 import CreateUser from "../assets/Form-Fields/user/CreateUser";
-import AddUser from "../Components/add-button";
-import postData from "../api/post";
-import Update from "../api/update";
+import Delete from "../api/delete";
 const User = () => {
   const [isopen, setisopen] = useState(false);
   const [title,setTitle]=useState('')
-  const [type,settype]=useState({})
+  const [api_info,setApi_info]=useState({})
   // Assuming useReadData returns an object with data and possibly an error state
   const { data } = useReadData(
     "http://localhost/cms/dashboard/api/usersApi/getUsers.php"
@@ -26,6 +24,13 @@ const User = () => {
   const handleAddUser = () => {
     setisopen(true);
     setTitle('Create User')
+    setApi_info(
+      {
+        type:"add",
+        url:"create url"
+
+      }
+    )
   };
   // Function to close the form
 const handleCloseForm = () => {
@@ -33,22 +38,17 @@ const handleCloseForm = () => {
   };
 const handleEdit=(val)=>{
   setTitle('update User')
-  settype(
+  setApi_info(
     {
-      edit:"edit",
-      url:"this is url",
-      id:val.id,
+      type:"edit",
+      url:`update url`,
     }
   )
 // header
 setisopen(true)
 }
 const handleDelete=(val)=>{
-  alert(val)
-}
-const handleSubmit=(data)=>
-{
-
+alert("confirmation")
 }
   return (
     <div>
@@ -65,8 +65,8 @@ const handleSubmit=(data)=>
         formFields={CreateUser}
         isOpenProp={isopen}
         isclose={handleCloseForm}
-        onHandleSubmit={handleSubmit}
-        type={type}
+        api_info={api_info}
+
       />
     </div>
   );

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const postData = async (data,url) => {
+const Create = async (data,url) => {
   // try {
   //   const response = await axios.post(utl, data, {
   //     headers: {
@@ -15,4 +15,4 @@ const postData = async (data,url) => {
   console.log(url)
 };
 
-export default postData;
+export default Create;
