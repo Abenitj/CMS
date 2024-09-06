@@ -4,6 +4,7 @@ import useReadData from "../api/Read";
 import Form from "../Components/Form";
 import CreateUser from "../assets/Form-Fields/user/CreateUser";
 import Delete from "../api/delete";
+import userTable from "../assets/Table-Head/userTable";
 const User = () => {
   const [isopen, setisopen] = useState(false);
   const [title,setTitle]=useState('')
@@ -12,14 +13,7 @@ const User = () => {
   const { data } = useReadData(
     "http://localhost/cms/dashboard/api/usersApi/getUsers.php"
   );
-  const tableHeaders = [
-    { header: "id", key: "id" },
-    { header: "name", key: "name" },
-    { header: "phone", key: "phone" },
-    { header: "email", key: "email" },
-    { header: "city", key: "city" },
-    { header: "country", key: "country" },
-  ];
+ 
   // Function to open the form
   const handleAddUser = () => {
     setisopen(true);
@@ -53,7 +47,7 @@ alert("confirmation")
   return (
     <div>
       <Table
-        tableHeaders={tableHeaders}
+        tableHeaders={userTable}
         title={"user"}
         onAdd={handleAddUser}
         data={data}
