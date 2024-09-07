@@ -1,12 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Form from '../Components/Form';
 import CreateUser from '../assets/Form-Fields/user/CreateUser';
+import Modal from '../Components/Modal';
 const Faq = () => {
+const [isopen, setisopen] = useState(true)
+const [isConfirmed,setisConfirmed]=useState(false)
+const handleConfirmation=()=>
+{
+  setisConfirmed(true);
+  setisopen(false);
+  
+}
+
     return (
         <div>
-        <Form title={'Create user'} formFields={CreateUser}/> 
+        <Modal isopen={isopen} onConfirm={handleConfirmation} close={()=>setisopen(false)}/>
         </div>
       );
 }
  
-export default Faq;
+export default Faq; 

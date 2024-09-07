@@ -1,30 +1,48 @@
-// src/Components/DeleteModal.jsx
-import React from "react";
-import Modal from "./Modal"; // Import the base Modal component
+import React from 'react';
+import { XMarkIcon, TrashIcon } from '@heroicons/react/24/solid';
 
-const DeleteModal = ({ isOpen, onClose, onDelete, userToDelete }) => {
+const Modal = ({ isopen, onclose, onConfirm }) => {
+  if (!isopen) return null;
+
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
-      <div>
-        <h2 className="text-lg font-semibold">Confirm Delete</h2>
-        <p className="mt-2">Are you sure you want to delete {userToDelete?.name}?</p>
-        <div className="mt-4 flex justify-end">
-          <button
-            className="bg-red-500 text-white px-4 py-2 rounded mr-2"
-            onClick={onDelete}
-          >
-            Delete
-          </button>
-          <button
-            className="bg-gray-300 text-black px-4 py-2 rounded"
-            onClick={onClose}
-          >
-            Cancel
-          </button>
+    <div
+      className='fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50'
+    >
+      <div className='relative flex flex-col justify-center items-center w-full max-w-md bg-white rounded-lg shadow-lg p-6'>
+        {/* Close button with X icon */}
+        <button
+          onClick={onclose}
+          className='absolute top-4 right-4 w-10 h-10 rounded-full bg-gray-200 hover:bg-gray-300 flex justify-center items-center text-gray-600'
+        >
+          <XMarkIcon className='w-6 h-6' />
+        </button>
+
+        {/* Modal content */}
+        <div className='text-center'>
+          {/* Trash icon */}
+          <TrashIcon className='w-16 h-16 text-red-600 mb-4 mx-auto' />
+
+          {/* Confirmation message */}
+          <p className="text-lg font-medium text-gray-800  mb-1">
+            Are you sure you want to delete this item?
+          </p>
+          <p className="text-sm text-gray-600 mb-6">
+            This action cannot be undone.
+          </p>
+
+          {/* Action buttons */}
+          <div className='flex justify-center gap-4'>
+            <button
+              onClick={onConfirm}
+              className='bg-red-600 text-white px-6 py-2 rounded-md hover:bg-red-700 transition duration-300'
+            >
+              Confirm
+            </button>
+          </div>
         </div>
       </div>
-    </Modal>
+    </div>
   );
 };
 
-export default DeleteModal;
+export default Modal;
