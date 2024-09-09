@@ -1,8 +1,8 @@
 <?php
 require '../../z_db.php'; // Ensure this file sets up the $con variable
-
+include "../Config.php";
 // Check if the request method is POST
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
     // Check if the ID is set in the URL
     if (isset($_GET['id'])) {
         $id = intval($_GET['id']); // Ensure ID is an integer

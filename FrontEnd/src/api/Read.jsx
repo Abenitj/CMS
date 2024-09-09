@@ -18,7 +18,9 @@ const useReadData = (url) => {
       }
     };
 
+  setInterval(() => {
     fetchData();
+  }, 500);
   }, [url]);
 
   return { data, loading, error };

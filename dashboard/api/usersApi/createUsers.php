@@ -1,36 +1,36 @@
 <?php
-require '../../z_db.php';
-include('../Config.php');
+require "../../z_db.php";
+include "../Config.php";
+// Check if request is POST
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Get data from POST request
+    $name = $_POST['firstName'];
+    $phone = $_POST['phone'];
+    $country = $_POST['country'];
+    $city = $_POST['city'];
+    $email = $_POST['email'];
+    $password = $_POST['password']; // You may want to hash this password
 
-header('Content-Type: application/json'); // Ensure JSON content type is set
-header('Access-Control-Allow-Origin: *'); // For CORS
+    // Simple input validation
+    if (empty($name) || empty($phone) || empty($country) || empty($city) || empty($email) || empty($password)) {
+        echo json_encode(["status" => "error", "message" => "All fields are required."]);
+        exit();
+    }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $data = json_decode(file_get_contents('php://input'), true);
+    // Insert data into the database
+    $sql = "INSERT INTO users (name, phone, country, city, email, password) 
+            VALUES ('$name', '$phone', '$country', '$city', '$email', '$password')";
 
-    if (json_last_error() === JSON_ERROR_NONE) {
-        $name = $con->real_escape_string($data['name']);
-        $phone = $con->real_escape_string($data['phone']);
-        $country = $con->real_escape_string($data['country']);
-        $city = $con->real_escape_string($data['city']);
-        $email = $con->real_escape_string($data['email']);
-        $password = password_hash($con->real_escape_string($data['password']), PASSWORD_BCRYPT);
-
-        $stmt = $con->prepare("INSERT INTO users (name, phone, country, city, email, password) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssssss", $name, $phone, $country, $city, $email, $password);
-
-        if ($stmt->execute()) {
-            echo json_encode(['message' => 'User created successfully']);
-        } else {
-            echo json_encode(['error' => 'Error: ' . $stmt->error]);
-        }
-
-        $stmt->close();
-        $con->close();
+    if ($con->query($sql) === TRUE) {
+        echo json_encode(["status" => "success", "message" => "User created successfully."]);
     } else {
-        echo json_encode(['error' => 'Invalid JSON']);
+        echo json_encode(["status" => "error", "message" => "Error: " . $cnn->error]);
     }
 } else {
-    echo json_encode(['error' => 'Invalid request method']);
+    echo json_encode(["status" => "error", "message" => "Invalid request method."]);
 }
+
+// Close the database connection
+$con->close();
+
 ?>

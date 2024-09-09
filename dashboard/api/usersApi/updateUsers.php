@@ -1,9 +1,9 @@
 <?php
 require '../../z_db.php';
-
+include "../Config.php";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $con->real_escape_string($_GET['id']);
-    $name = $con->real_escape_string($_POST['name']);
+    $name = $con->real_escape_string($_POST['firstName']);
     $phone = $con->real_escape_string($_POST['phone']);
     $country = $con->real_escape_string($_POST['country']);
     $city = $con->real_escape_string($_POST['city']);

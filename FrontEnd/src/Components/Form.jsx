@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-
 import { XMarkIcon } from '@heroicons/react/24/outline';
-import Create from "../api/create"
+import Create from "../api/create";
 import Update from '../api/update';
-const Form = ({api_info, formFields, title, isOpenProp, isclose,url}) => {
+
+const Form = ({ api_info, formFields, title, isOpenProp, isclose, url }) => {
   const [isOpen, setIsOpen] = useState(isOpenProp);
 
   useEffect(() => {
@@ -13,33 +13,33 @@ const Form = ({api_info, formFields, title, isOpenProp, isclose,url}) => {
   const [formData, setFormData] = useState(
     formFields.reduce((acc, field) => ({ ...acc, [field.name]: '' }), {})
   );
-  const [fileNames, setFileNames] = useState({}); // State to store file names
+  const [fileNames, setFileNames] = useState({});
   const [errors, setErrors] = useState({});
 
   const handleInputChange = (event) => {
     const { name, value, type, files } = event.target;
     if (type === 'file') {
-      setFormData({
-        ...formData,
+      setFormData((prevData) => ({
+        ...prevData,
         [name]: files[0],
-      });
+      }));
       setFileNames({
         ...fileNames,
-        [name]: files[0] ? files[0].name : '', // Update file name
+        [name]: files[0] ? files[0].name : '',
       });
       setErrors((prevErrors) => ({ ...prevErrors, [name]: '' }));
     } else {
-      setFormData({
-        ...formData,
+      setFormData((prevData) => ({
+        ...prevData,
         [name]: value,
-      });
+      }));
       validateField(name, value);
     }
   };
 
   const validateField = (name, value) => {
     let errorMessage = '';
-    const field = formFields.find(field => field.name === name);
+    const field = formFields.find((field) => field.name === name);
     
     if (field && field.required && !value) {
       errorMessage = `${field.label} is required`;
@@ -53,7 +53,7 @@ const Form = ({api_info, formFields, title, isOpenProp, isclose,url}) => {
     let valid = true;
     const newErrors = {};
 
-    formFields.forEach(field => {
+    formFields.forEach((field) => {
       if (field.required && (!formData[field.name] || (field.type === 'file' && !formData[field.name]))) {
         newErrors[field.name] = `${field.label} is required`;
         valid = false;
@@ -61,17 +61,19 @@ const Form = ({api_info, formFields, title, isOpenProp, isclose,url}) => {
     });
 
     if (valid) {
-     if(api_info.type =='edit')
-     {
-      Update(formData,api_info.url)
-     }
-     else
-     {
-      Create(formData,api_info.url)
-     }
+      const formDataObject = new FormData();
+      Object.keys(formData).forEach((key) => {
+        formDataObject.append(key, formData[key]);
+      });
+
+      if (api_info.type === 'edit') {
+        Update(formDataObject, api_info.url);
+      } else {
+        Create(formDataObject, api_info.url);
+      }
+      
       setIsOpen(false);
       isclose();
-       // Call the parent function to handle form close
     } else {
       setErrors(newErrors);
     }
@@ -79,7 +81,7 @@ const Form = ({api_info, formFields, title, isOpenProp, isclose,url}) => {
 
   const handleClose = () => {
     setIsOpen(false);
-    isclose(); // Call the parent function when the form is manually closed
+    isclose();
   };
 
   if (!isOpen) return null;
@@ -118,8 +120,9 @@ const Form = ({api_info, formFields, title, isOpenProp, isclose,url}) => {
           <div className="flex justify-center">
             <button
               type="submit"
-              className="w-1/4 bg-secondary-V2 hover:bg-gray-200 py-2 px-4 rounded-md  text-md transition-all duration-100"
-            >{title}
+              className="w-1/4 bg-secondary-V2 hover:bg-gray-200 py-2 px-4 rounded-md text-md transition-all duration-100"
+            >
+              {title}
             </button>
           </div>
         </form>

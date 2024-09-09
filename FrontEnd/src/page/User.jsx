@@ -23,7 +23,7 @@ const User = () => {
     setTitle("Create User");
     setApi_info({
       type: "add",
-      url: "create url",
+      url: "http://localhost/cms/dashboard/api/usersApi/createUsers.php",
     });
   };
   // Function to close the form
@@ -34,7 +34,7 @@ const User = () => {
     setTitle("update User");
     setApi_info({
       type: "edit",
-      url: `update url`,
+      url: `http://localhost/cms/dashboard/api/usersApi/updateUsers.php?id=${val.id}`,
     });
     // header
     setisopen(true);
@@ -47,7 +47,7 @@ const User = () => {
   {
      if(selectedUser)
      {
-      Delete(selectedUser,"url for delete")
+      Delete(selectedUser,`http://localhost/cms/dashboard/api/usersApi/deleteUsers.php?id=${selectedUser}`)
        setisModalOpen(false)
      }
   }

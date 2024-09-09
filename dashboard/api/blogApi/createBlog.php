@@ -1,6 +1,6 @@
 <?php
 require '../../z_db.php'; // Make sure this file sets up the $conn variable
-
+include "../Config.php";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['blog_title'], $_POST['blog_detail'], $_POST['blog_desc'], $_FILES['ufile'])) {
         
@@ -8,7 +8,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $blog_detail = htmlspecialchars(trim($_POST['blog_detail']));
         $blog_desc = htmlspecialchars(trim($_POST['blog_desc']));
         $file_name = $_FILES['ufile']['name'];
-        // File upload directory
+        
+        // File upload directory (relative path)
         $directory = "../../uploads/blog/";
         $target_file = $directory . basename($file_name);
 
@@ -32,12 +33,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
             exit;
         }
-        // Try to upload file
+
+        // Try to upload the file
         if (move_uploaded_file($_FILES['ufile']['tmp_name'], $target_file)) {
             
+            // Save only the file name and directory for database
+            $file_path_for_db = 'blog/' . basename($file_name);
+
             // Insert blog post into database
             $stmt = $con->prepare("INSERT INTO blog (blog_title, blog_detail, blog_desc, ufile) VALUES (?, ?, ?, ?)");
-            $stmt->bind_param("ssss", $blog_title, $blog_detail, $blog_desc, $target_file);
+            $stmt->bind_param("ssss", $blog_title, $blog_detail, $blog_desc, $file_path_for_db);
             
             if ($stmt->execute()) {
                 echo "Blog post successfully saved.";
