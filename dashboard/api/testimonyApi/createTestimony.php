@@ -13,9 +13,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
         if (move_uploaded_file($temp_name, $file_path)) {
             // Prepare the SQL statement
+            $file_path_for_db = 'testimony/'.basename($_FILES['ufile']['name']);
             $stmt = $con->prepare("INSERT INTO testimony (name, message, position, ufile) VALUES (?, ?, ?, ?)");
             if ($stmt) {
-                $stmt->bind_param("ssss", $name, $message, $position, $file_path);
+                $stmt->bind_param("ssss", $name, $message, $position, $file_path_for_db);
                 if ($stmt->execute()) {
                     echo "Testimony successfully added!";
                 } else {

@@ -6,7 +6,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
     // Check if the ID is set in the URL
     if (isset($_GET['id'])) {
         $id = intval($_GET['id']); // Ensure ID is an integer
-
         // Check if ID is valid
         if ($id <= 0) {
             echo json_encode(["status" => "error", "message" => "Invalid ID"]);

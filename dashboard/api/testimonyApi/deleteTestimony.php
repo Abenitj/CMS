@@ -1,7 +1,7 @@
 <?php
 require '../../z_db.php';
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+include "../Config.php";
+if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
     $id = $con->real_escape_string($_GET['id']);
     $stmt=$con->prepare('select ufile from testimony where id=?');
     $stmt->bind_param('i',$id);

@@ -23,7 +23,7 @@ const Testimony = () => {
     setTitle("Create Testimony");
     setApi_info({
       type: "add",
-      url: "http://localhost/cms/dashboard/api/usersApi/createUsers.php",
+      url: "http://localhost/cms/dashboard/api/testimonyApi/createTestimony.php",
     });
   };
   // Function to close the form
@@ -34,7 +34,7 @@ const Testimony = () => {
     setTitle("update Testimony");
     setApi_info({
       type: "edit",
-      url: `http://localhost/cms/dashboard/api/usersApi/updateUsers.php?id=${val.id}`,
+      url: `http://localhost/cms/dashboard/api/testimonyApi/updateTestimony.php?id=${val.id}`,
     });
     // header
     setisopen(true);
@@ -47,7 +47,7 @@ const Testimony = () => {
   {
      if(selectedUser)
      {
-      Delete(selectedUser,`http://localhost/cms/dashboard/api/usersApi/deleteUsers.php?id=${selectedUser}`)
+      Delete(selectedUser,`http://localhost/cms/dashboard/api/testimonyApi/deleteTestimony.php?id=${selectedUser}`)
        setisModalOpen(false)
      }
   }

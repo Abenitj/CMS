@@ -28,6 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if (move_uploaded_file($_FILES['ufile']['tmp_name'], $target_file)) {
             // Handle file deletion from server
+            $file_path_for_db = 'testimony/'.basename($_FILES['ufile']['name']);
             $stmt = $con->prepare('SELECT ufile FROM testimony WHERE id = ?');
             if ($stmt === false) {
                 error_log('Prepare failed: ' . $con->error);
@@ -56,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 exit;
             }
 
-            $stmt->bind_param('ssssi', $message, $name, $position, $target_file, $id);
+            $stmt->bind_param('ssssi', $message, $name, $position, $file_path_for_db, $id);
 
             if ($stmt->execute()) {
                 echo json_encode(['message' => 'Testimony updated successfully']);
