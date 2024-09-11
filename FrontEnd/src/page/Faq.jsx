@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import Form from '../Components/Form';
-import CreateUser from '../assets/Form-Fields/user/CreateUser';
 import Modal from '../Components/Modal';
 const Faq = () => {
 const [isopen, setisopen] = useState(true)

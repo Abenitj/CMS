@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Table from "../Components/Table";
 import useReadData from "../api/Read";
 import Form from "../Components/Form";
-import CreateBlog from "../assets/Form-Fields/blog/CreateBlog";
+import BlogForm from "../assets/Form-Fields/BlogForm";
 import Delete from "../api/delete";
 import blogTable from "../assets/Table-Head/blogTable";
 import Modal from "../Components/Modal";
@@ -68,7 +68,7 @@ const Blog = () => {
       />
       <Form
         title={title}
-        formFields={CreateBlog}
+        formFields={BlogForm}
         isOpenProp={isopen}
         isclose={handleCloseForm}
         api_info={api_info}

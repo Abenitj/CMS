@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Table from "../Components/Table";
 import useReadData from "../api/Read";
 import Form from "../Components/Form";
-import CreateUser from "../assets/Form-Fields/user/CreateUser";
+import UserForm from "../assets/Form-Fields/UserForm"
 import Delete from "../api/delete";
 import userTable from "../assets/Table-Head/userTable";
 import Modal from "../Components/Modal";
@@ -68,7 +68,7 @@ const User = () => {
       />
       <Form
         title={title}
-        formFields={CreateUser}
+        formFields={UserForm}
         isOpenProp={isopen}
         isclose={handleCloseForm}
         api_info={api_info}

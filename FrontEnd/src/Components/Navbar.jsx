@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { FaMoon, FaSun, FaUserCircle } from 'react-icons/fa'; // Icons for dark mode, light mode, and profile
+import { FaMoon, FaSun,FaBars, FaUserCircle } from 'react-icons/fa'; // Icons for dark mode, light mode, and profile
 
-const Navbar = () => {
+const Navbar = ({onClose}) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   const toggleDarkMode = () => {
@@ -13,9 +13,10 @@ const Navbar = () => {
     <div 
       className={`w-full h-[50px] flex items-center justify-between px-4 bg-secondary text-nuetral shadow-md ${isDarkMode ? 'bg-dark text-light' : ''}`}
     >
+    <div>  <FaBars className='hover:cursor-pointer' onClick={onClose} size={20}/></div>
       {/* Name/Brand */}
       <div className="text-xl font-bold">
-        Addis Software
+        Abissinia Software
       </div>
       
       {/* Right side: Dark mode toggle and profile */}
