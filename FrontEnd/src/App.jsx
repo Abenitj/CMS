@@ -18,7 +18,7 @@ const [isopen, setisopen] = useState(false)
     <Router>
       <div className="flex w-screen h-screen bg-primary fixed">
         {/* Sidebar: Fixed on the left side */}
-        <div className={`md:w-[230px] ${isopen && "md:w-[0px]" } transition-all duration-300 ease-in-out h-screen text-nuetral`}>
+        <div className={`w-[230px] ${isopen && "w-[0px]" } transition-all duration-300 ease-in-out h-screen text-nuetral`}>
           <Sidebar />
         </div>
         {/* Main content area: occupies the rest of the screen */}

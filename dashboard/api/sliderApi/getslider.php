@@ -5,7 +5,6 @@ include "../Config.php";
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $sql = "SELECT * FROM slider";
     $result = $con->query($sql);
-
     $data = [];
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {

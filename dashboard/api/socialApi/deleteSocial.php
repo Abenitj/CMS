@@ -1,6 +1,6 @@
 <?php
 require '../../z_db.php';
-
+include "../Config.php";
 $id = $_GET['id'] ?? '';
 
 if ($id) {

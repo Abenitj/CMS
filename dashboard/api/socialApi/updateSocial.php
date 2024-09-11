@@ -1,13 +1,10 @@
 <?php
 require '../../z_db.php';
-
-header('Content-Type: application/json');
-
+include "../Config.php";
 $id = $_GET['id'] ?? '';
 $name = $_POST['name'] ?? '';
 $fa = $_POST['fa'] ?? '';
 $social_link = $_POST['social_link'] ?? '';
-
 if ($id && $name && $fa && $social_link) {
     $stmt = $con->prepare("UPDATE social SET name = ?, fa = ?, social_link = ? WHERE id = ?");
     $stmt->bind_param("sssi", $name, $fa, $social_link, $id);

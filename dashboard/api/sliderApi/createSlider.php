@@ -1,6 +1,7 @@
 <?php
 // create.php
 require '../../z_db.php';
+include "../Config.php";
 // Define the upload directory
 $uploadDir = '../../uploads/slider/';
 
@@ -12,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Generate a new file name and move the file to the upload directory   
         $destPath = $uploadDir . $fileName;
         if (move_uploaded_file($fileTmpPath, $destPath)) {
-             
+          $file_path_for_db="slider/".basename($fileName);
         } else {
             echo json_encode(["message" => "Error moving the uploaded file"]);
             exit();
@@ -26,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $slide_text = htmlspecialchars($_POST['slide_text'], ENT_QUOTES, 'UTF-8');
 
     $stmt = $con->prepare("INSERT INTO slider (slide_title, slide_text, ufile) VALUES (?, ?, ?)");
-    $stmt->bind_param('sss', $slide_title, $slide_text, $destPath);
+    $stmt->bind_param('sss', $slide_title, $slide_text, $file_path_for_db);
 
     if ($stmt->execute()) {
         echo json_encode(["message" => "New slide created successfully"]);
