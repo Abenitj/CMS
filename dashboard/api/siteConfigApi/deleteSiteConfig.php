@@ -1,15 +1,9 @@
 <?php
 // delete.php
 require '../../z_db.php';
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+include "../Config.php";
+if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
     $id = $_GET['id'];
-
-    if (filter_var($id, FILTER_VALIDATE_INT) === false) {
-        echo json_encode(["message" => "Invalid ID"]);
-        exit();
-    }
-
     $stmt = $con->prepare("DELETE FROM siteconfig WHERE id=?");
     $stmt->bind_param('i', $id);
 

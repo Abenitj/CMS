@@ -1,6 +1,6 @@
 <?php
 require '../../z_db.php';
-
+include "../Config.php";
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Validate and sanitize the ID
     if (isset($_GET['id']) && is_numeric($_GET['id'])) {

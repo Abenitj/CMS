@@ -1,7 +1,7 @@
 <?php
 // create.php
 require '../../z_db.php';
-
+include "../Config.php";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $site_keyword = htmlspecialchars(trim($_POST['site_keyword']));
     $site_desc = htmlspecialchars(trim($_POST['site_desc']));

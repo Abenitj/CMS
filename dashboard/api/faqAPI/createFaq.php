@@ -1,6 +1,6 @@
 <?php
 require '../../z_db.php';
-
+include "../Config.php";
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Validate and sanitize inputs
     if (isset($_POST['question']) && isset($_POST['answer'])) {

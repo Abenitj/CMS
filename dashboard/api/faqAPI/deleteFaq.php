@@ -1,8 +1,8 @@
 <?php
 require '../../z_db.php';
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+include "../Config.php";
+if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
     $id = intval($_GET['id']);
-
     $stmt = $con->prepare("DELETE FROM faqs WHERE id=?");
     $stmt->bind_param("i", $id);
 

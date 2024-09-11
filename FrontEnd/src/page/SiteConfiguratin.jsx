@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import Table from "../Components/Table";
 import useReadData from "../api/Read";
 import Form from "../Components/Form";
-import SiteConfigForm from "../assets/Form-Fields/SectionTitleForm"
+import SiteConfigForm from "../assets/Form-Fields/SiteConfigForm"
 import Delete from "../api/delete";
-import siteConfigTable from "../assets/Table-Head/sectionTitleTable";
+import siteConfigTable from "../assets/Table-Head/siteConfigTable";
 import Modal from "../Components/Modal";
 const SiteConfiguration = () => {
   const [isopen, setisopen] = useState(false);
@@ -23,7 +23,7 @@ const SiteConfiguration = () => {
     setTitle("Create Site-Configuration");
     setApi_info({
       type: "add",
-      url: "http://localhost/cms/dashboard/api/testimonyApi/createTestimony.php",
+      url: "http://localhost/cms/dashboard/api/siteConfigApi/createSiteConfig.php",
     });
   };
   // Function to close the form
@@ -34,7 +34,7 @@ const SiteConfiguration = () => {
     setTitle("update Site-Configuration");
     setApi_info({
       type: "edit",
-      url: `http://localhost/cms/dashboard/api/testimonyApi/updateTestimony.php?id=${val.id}`,
+      url: `http://localhost/cms/dashboard/api/siteConfigApi/updateSiteConfig.php?id=${val.id}`,
     });
     // header
     setisopen(true);
@@ -47,7 +47,7 @@ const SiteConfiguration = () => {
   {
      if(selectedUser)
      {
-      Delete(selectedUser,`http://localhost/cms/dashboard/api/testimonyApi/deleteTestimony.php?id=${selectedUser}`)
+      Delete(selectedUser,`http://localhost/cms/dashboard/api/siteConfigApi/deleteSiteConfig.php?id=${selectedUser}`)
        setisModalOpen(false)
      }
   }
