@@ -1,7 +1,7 @@
 <?php
 // update.php
 require '../../z_db.php';
-
+include "../Config.php";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Validate and sanitize input
     $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;

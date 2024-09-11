@@ -1,7 +1,7 @@
 <?php
 // create.php
 require '../../z_db.php';
-
+include "../Config.php";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Validate and sanitize input
     $about_title = trim($_POST['about_title']);

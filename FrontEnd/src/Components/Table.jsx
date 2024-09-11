@@ -37,7 +37,7 @@ const Table = ({ tableHeaders, data = [], onEdit, onDelete, onAdd, title }) => {
           <Add_Button action={onAdd} title={title} />
         </div>
       </div>
-     <div className='overflow-auto'>
+     <div className='overflow-auto scrollbar-thin'>
      <table className="w-full bg-secondary border border-secondary-V2">
         <thead>
           <tr className="bg-secondary-V2 text-neutral uppercase text-sm leading-normal">

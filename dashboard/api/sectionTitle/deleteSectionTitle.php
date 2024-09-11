@@ -1,8 +1,8 @@
 <?php
 // delete.php
 require '../../z_db.php';
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+include "../Config.php";
+if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
     // Validate and sanitize input
     $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
