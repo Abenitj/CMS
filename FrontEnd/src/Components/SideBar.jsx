@@ -1,8 +1,8 @@
 import React from 'react';
 import SideBarList from './SideBarList';
 import sideBarData from '../assets/sideBarData';
-import profilePic from '../assets/image/cv pic.png'; // Ensure the file path is correct
-
+ // Ensure the file path is correct
+import profile from '../assets/profile';
 const SideBar = () => {
   return (
     <div className="w-full h-screen overflow-y-scroll scrollbar-track-secondary scrollbar-thumb-secondary-V3 overflow-x-hidden bg-secondary text-neutral scrollbar-thin">
@@ -11,11 +11,11 @@ const SideBar = () => {
         {/* Profile Picture and Name */}
         <div className="flex flex-col items-center p-4">
           <img
-            src={profilePic}
+            src={profile.image}
             alt="Profile"
             className="w-16 h-16  rounded-full border-2 border-neutral"
           />
-          <h2 className="text-xl font-semibold text-center mt-2">Abenezer Terefe</h2>
+          <h2 className="text-xl font-semibold text-center mt-2">{profile.firstname}{profile.lastname}</h2>
         </div>
 
         {/* Sidebar Links */}

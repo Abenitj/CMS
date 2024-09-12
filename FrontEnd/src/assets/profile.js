@@ -1,11 +1,7 @@
-import AbenezerPic from "./image/cv pic.png"
-export default [
-    {
-      firstname: "John",
-      lastname: "Doe",
-      image:{AbenezerPic},
-      username: "johndoe123",
-      password: "password123"
-    },
-  ];
+import profilePic from '../assets/image/cv pic.png';
+export default {
+      firstname: "Abenezer",
+      lastname: "Terefe",
+      image:profilePic,
+    }
   
