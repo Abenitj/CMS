@@ -30,15 +30,15 @@ const Table = ({ tableHeaders, data = [], onEdit, onDelete, onAdd, title }) => {
               value={searchTerm}
               onChange={handleSearchChange}
               placeholder="Search..."
-              className="w-[300px] py-2 px-4 border border-gray-300 rounded-md outline-secondary-V2"
+              className="w-[300px] py-2 px-4 border border-secondary text-neutral bg-secondary-V2 rounded-md outline-none"
             />
             <FaSearch className="absolute top-3 right-3 text-gray-500" size={20} />
           </div>
           <Add_Button action={onAdd} title={title} />
         </div>
       </div>
-     <div className='overflow-auto scrollbar-thin'>
-     <table className="w-full bg-secondary border border-secondary-V2">
+     <div className='overflow-auto scrollbar-thin scrollbar-thumb-secondary-V2 scrollbar-track-secondary'>
+     <table className="w-full bg-secondary border border-secondary-V2 ">
         <thead>
           <tr className="bg-secondary-V2 text-neutral uppercase text-sm leading-normal">
             {tableHeaders.map((header, index) => (

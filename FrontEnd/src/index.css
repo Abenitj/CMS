@@ -6,11 +6,13 @@
   --secondary: #F9F6F7;
   --secondary-v2: #e2e2e2;
   --neutral: #1E2A5E;
+  --secondary-v3: #ebebeb;
 }
 .dark-mode {
   --primary: #101a27;
   --secondary: #18202d;
   --secondary-v2: #363f4b;
+  --secondary-v3: #1e2630;
   --neutral: #F9F6F7;
 }
 

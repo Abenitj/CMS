@@ -88,15 +88,15 @@ const Form = ({ api_info, formFields, title, isOpenProp, isclose, url }) => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="relative w-full max-w-3xl bg-white border text-neutral border-gray-200 rounded-md shadow-sm p-6">
+      <div className="relative w-full max-w-3xl bg-primary  border-nuetral text-neutral   rounded-md border-none shadow-sm p-6">
         <button
           onClick={handleClose}
-          className="absolute top-4 right-4 p-2 bg-gray-200 rounded-full hover:bg-gray-300 focus:outline-none"
+          className="absolute top-4 right-4 p-2 bg-secondary-V2 rounded-full  focus:outline-none"
         >
-          <XMarkIcon className="h-6 w-6 text-gray-600" />
+          <XMarkIcon className="h-6 w-6 text-netral " />
         </button>
-        <h2 className="text-2xl font-semibold mb-6 text-gray-700 text-center">{title}</h2>
-        <form onSubmit={handleSubmit} className="space-y-6 max-h-96 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100">
+        <h2 className="text-2xl font-semibold mb-6 text-neutral text-center">{title}</h2>
+        <form onSubmit={handleSubmit} className="space-y-6 max-h-96 overflow-y-auto scrollbar-thin scrollbar-thumb-secondary-V2 scrollbar-track-secondary">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {formFields.map((field, index) => (
               <div key={index} className="flex flex-col">
@@ -108,7 +108,7 @@ const Form = ({ api_info, formFields, title, isOpenProp, isclose, url }) => {
                   type={field.type}
                   name={field.name}
                   onChange={handleInputChange}
-                  className={`border-b border-gray-300 rounded-none p-2 focus:outline-none focus:border-blue-500 ${errors[field.name] ? 'border-red-500' : ''}`}
+                  className={`border-b bg-secondary-V3 border-secondary rounded-none p-2 focus:outline-none focus:border-blue-500 ${errors[field.name] ? 'border-red-500' : ''}`}
                   accept={field.accept || ''}
                 />
                 {errors[field.name] && (
@@ -120,7 +120,7 @@ const Form = ({ api_info, formFields, title, isOpenProp, isclose, url }) => {
           <div className="flex justify-center">
             <button
               type="submit"
-              className="w-1/4 bg-secondary-V2 hover:bg-gray-200 py-2 px-4 rounded-md text-md transition-all duration-100"
+              className="w-1/4 bg-secondary-V3 active:bg-secondary-V2 py-2 px-4 rounded-md text-md transition-all duration-100"
             >
               {title}
             </button>

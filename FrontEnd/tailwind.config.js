@@ -8,10 +8,12 @@ export default {
         secondary: {
           DEFAULT: "var(--secondary)",
           V2: "var(--secondary-v2)",
+          V3: "var(--secondary-v3)",
         },
         neutral: "var(--neutral)",
       },
     },
   },
-  plugins: [require("tailwind-scrollbar"), require("tailwind-scrollbar-hide")],
+  plugins: [require("tailwind-scrollbar"),
+    require("tailwind-scrollbar-hide")],
 };
