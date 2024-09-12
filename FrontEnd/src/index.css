@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+:root {
+  --primary: #fff;
+  --secondary: #F9F6F7;
+  --secondary-v2: #e2e2e2;
+  --neutral: #1E2A5E;
+}
+.dark-mode {
+  --primary: #101a27;
+  --secondary: #18202d;
+  --secondary-v2: #363f4b;
+  --neutral: #F9F6F7;
+}
+
+

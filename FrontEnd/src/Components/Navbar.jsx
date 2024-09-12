@@ -11,7 +11,7 @@ const Navbar = ({onClose}) => {
 
   return (
     <div 
-      className={`w-full h-[50px] flex items-center justify-between px-4 bg-secondary text-nuetral shadow-md ${isDarkMode ? 'bg-dark text-light' : ''}`}
+      className={`w-full h-[50px] flex items-center justify-between px-4  text-nuetral shadow-md ${isDarkMode ? 'bg-dark text-light' : ''}`}
     >
     <div>  <FaBars className='hover:cursor-pointer' onClick={onClose} size={20}/></div>
       {/* Name/Brand */}

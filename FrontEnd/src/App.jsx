@@ -18,13 +18,13 @@ const [isopen, setisopen] = useState(false)
     <Router>
       <div className="flex w-screen h-screen bg-primary fixed">
         {/* Sidebar: Fixed on the left side */}
-        <div className={`w-[230px] ${isopen && "w-[0px]" } transition-all duration-300 ease-in-out h-screen text-nuetral`}>
+        <div className={`w-[230px] ${isopen && "w-0 " } transition-all duration-300 ease-in-out h-screen text-nuetral`}>
           <Sidebar />
         </div>
         {/* Main content area: occupies the rest of the screen */}
         <div className="flex-1 w-6 flex flex-col bf-primary">
           {/* Navbar: Fixed at the top of the main content area */}
-          <div className="w-full h-[50px] bg-slate-100">
+          <div className="w-full h-[50px] text-neutral bg-secondary">
             <Navbar onClose={()=>setisopen(!isopen)} />
           </div>
           {/* Main content: the dashboard's main content area */}

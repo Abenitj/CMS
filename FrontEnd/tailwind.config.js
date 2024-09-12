@@ -4,18 +4,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#FFFFFF",
+        primary: "var(--primary)",
         secondary: {
-          DEFAULT: "#F9F6F7",
-          V2: "#e2e2e2",
+          DEFAULT: "var(--secondary)",
+          V2: "var(--secondary-v2)",
         },
-        nuetral: "#1E2A5E",
-        error: "#FF0000",
-        success: "#00FF00",
-        accent: {
-          DEFAULT: "#FF971D",
-          v2: "#FFE8D6",
-        },
+        neutral: "var(--neutral)",
       },
     },
   },
